@@ -1,0 +1,11 @@
+{
+  "name": "react-base",
+  "version": "1.0.0",
+  "description": "Base Template for React Projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aykut Simsek",
+  "license": "MIT"
+}
