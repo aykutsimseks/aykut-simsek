@@ -1,0 +1,228 @@
+.homepage {
+	$header-height: 60px;
+	$primary-color: #26292E;
+	$secondary-color: #1d1f23;
+
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-size: 18px;
+  font-family: 'Lato', helvetica, sans-serif;
+  background: $primary-color;
+  text-align: center;
+
+	header {
+	  height: $header-height;
+	  line-height: $header-height;
+	  background-color: $secondary-color;
+	  padding: 0 20px;
+	  text-align: center;
+	  color: #9d9d9d;
+	  display: none;
+	}
+
+	.main {
+		height: calc(100vh - 0px);
+		background-color: $primary-color;
+		font-size: 51px;
+    color: #FFFFFF;
+
+    .personal {
+			height: 15vh;
+			padding-top: 15vh;
+    	.title {
+
+    	}
+    }
+
+		.social-icons {
+			&.list-unstyled {
+				padding: 10px 5px;
+				margin: 0;
+				list-style: none;
+			}
+
+			&.list-inline li {
+				display: inline-block;
+				padding-right: 7px;
+				padding-left: 7px;
+			}
+
+			.fa {
+				font-size: .5em;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				color: #FFF;
+				color: rgba(255, 255, 255, 0.8);
+				-webkit-transition: all 0.3s ease-in-out;
+				-moz-transition: all 0.3s ease-in-out;
+				-ms-transition: all 0.3s ease-in-out;
+				-o-transition: all 0.3s ease-in-out;
+				transition: all 0.3s ease-in-out;
+
+				&:hover, &:active {
+					color: #fff;
+					background-color: $secondary-color;
+				}
+			}
+
+			&.icon-circle .fa{
+				border-radius: 50%;
+
+				:hover, :active {
+					color: #FFF;
+				}
+			}
+			&.icon-rounded .fa{
+				border-radius:5px;
+			}
+			&.icon-flat .fa{
+				border-radius: 0;
+			}
+
+			&.icon-zoom {
+				:hover, :active {
+					 -webkit-transform: scale(1.15);
+					-moz-transform: scale(1.15);
+					-ms-transform: scale(1.15);
+					-o-transform: scale(1.15);
+					transform: scale(1.15);
+				}
+			}
+
+			&.icon-rotate {
+				:hover, :active {
+					-webkit-transform: scale(1.15) rotate(360deg);
+					-moz-transform: scale(1.15) rotate(360deg);
+					-ms-transform: scale(1.15) rotate(360deg);
+					-o-transform: scale(1.15) rotate(360deg);
+					transform: scale(1.15) rotate(360deg);
+				}
+			}
+			/*
+			.fa-facebook,.fa-facebook-square{background-color:#3C599F;}
+			.fa-github,.fa-github-alt,.fa-github-square{background-color:#070709;}
+			.fa-google-plus,.fa-google-plus-square{background-color:#CF3D2E;}
+			.fa-instagram{background-color:#A1755C;}
+			.fa-linkedin,.fa-linkedin-square{background-color:#0085AE;}
+			.fa-twitter,.fa-twitter-square{background-color:#32CCFE;}
+			.fa-envelope,.fa-envelope-o{background-color:#333;}
+			*/
+		}
+
+		.swiper-button {
+      border: none;
+      border-radius: none;
+      padding: 10px 40px;
+      margin: 20px 30px 0px 30px;
+      background: none;
+      font-size: 20px;
+      color: rgba(255, 255, 255, .9);
+      cursor: pointer;
+
+
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+
+      &:hover, &:active {
+        background: #1d1f23;
+        color: white;
+        -webkit-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -ms-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        transform: scale(1.15);
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .coverflow-slider {
+		  .slide {
+		    align-items: center;
+		    text-align: center;
+		    display: -webkit-box;
+		    display: -ms-flexbox;
+		    display: -webkit-flex;
+		    display: flex;
+		    -webkit-box-pack: center;
+		    -ms-flex-pack: center;
+		    -webkit-justify-content: center;
+		    justify-content: center;
+		    -webkit-box-align: center;
+		    -ms-flex-align: center;
+		    -webkit-align-items: center;
+		    -webkit-box-reflect: below 1px -webkit-linear-gradient(bottom, rgba(black, .4) , rgba(black, .1) 15%, rgba(black, 0) 0%, rgba(black, 0));
+		  }
+
+
+		  .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+		    bottom: -10px;
+		  }
+
+		  .swiper-pagination-bullet {
+		    opacity: 1;
+		    background-color: #fff;
+		  }
+
+
+		  .swiper-pagination-bullet-active {
+		    opacity: 1;
+		    background-color: $secondary-color;
+		    border: 1px solid rgba(200, 200, 200, .5);
+		  }
+
+
+		  .swiper-container {
+		    width: 100%;
+		    height: 100%;
+		    padding: 20vh .5em .5em .5em;
+		    max-width: 1000px;
+
+		    .swiper-slide {
+		      background-position: left;
+		      background-size: cover;
+		      background-repeat: no-repeat;
+		      height: 190px;
+		      opacity: .5;
+
+		      &.swiper-slide-active {
+		        opacity: 1;
+		      }
+
+		      .text {
+		        position: absolute;
+		        top: 0;
+		        left: 0;
+		        right: 0;
+		        text-align: center;
+		        font-size: 24px;
+		        color: white;
+		        padding: 5px;
+		        overflow: hidden;
+		        background: rgba(38, 41, 46, 0.8);
+		        font-weight: 300;
+		        display: none;
+
+		        @media (max-width: 900px) {
+		          font-size: 14px;
+		        }
+		      }
+
+		      &:hover {
+		        .text {
+		          display: block;
+		        }
+		      }
+		    }
+		  }
+		}
+	}
+}

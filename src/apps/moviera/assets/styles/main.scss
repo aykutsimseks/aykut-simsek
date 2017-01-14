@@ -1,0 +1,114 @@
+.moviera {
+  $theme: #DE5E60;
+  $theme-alt: #ff5E60;
+  $theme-text: #000;
+  $font-family: Roboto, sans-serif;
+  $panel-width: 340px;
+
+  min-height: calc( 100vh - 60px );
+  margin: 0;
+  font-family: $font-family;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  background: #333;
+  color: $theme-text;
+  font-size: 12px;
+
+  .sk-results-list {
+    padding: 10px 0 0 0;
+  }
+  .sk-action-bar__info, .sk-action-bar-row {
+    display: flex;
+  }
+
+  .sk-search-box {
+    border-radius: 0;
+  }
+
+  .sk-layout__top-bar {
+    background: #333;
+  }
+
+  .my-logo {
+    margin-right: 10px;
+    flex: 0 0 220px;
+  }
+
+  .sk-hits-list-hit__poster,
+  .sk-hits-grid-hit__poster {
+    width: 150px;
+    flex: 0 0 100px;
+    padding: 10px 0px 0 0;
+  }
+
+  .sk-hits-grid {
+    margin: 0 14px 20px 5px;
+  }
+
+  .sk-hits-grid__item {
+    margin-bottom: 0;
+  }
+
+  .sk-hits-grid-hit {
+    max-width: 185px;
+    margin: 0 0 0 10px;
+    padding: 0;
+    align-items: flex-start;
+  }
+
+  .sk-hits-grid-hit__title {
+    margin-top: 0;
+  }
+
+  .sk-layout__results {
+    min-width: 400px;
+  }
+
+  .sk-search-box__icon:before {
+    background: url('../img/search.svg') no-repeat 0 0;
+  }
+
+  .sk-toggle-option.is-active {
+    background-color: $theme;
+    border-color: $theme;
+    color: #fff;
+  }
+
+  .sk-toggle-option,
+  .sk-selected-filters-option__name,
+  .sk-selected-filters-option__remove-action,
+  .sk-reset-filters,
+  .sk-hits-grid-hit a,
+  .sk-hits-list a,
+  .sk-refinement-list__view-more-action {
+    color: $theme;
+  }
+
+  .sk-toggle,
+  .sk-select select,
+  .sk-toggle-option:first-child,
+  .sk-toggle-option:last-child {
+    border-radius: 0;
+  }
+
+  .sk-layout__filters,
+  .sk-layout__results {
+    margin: 0;
+    min-height: calc( 100vh - 60px );
+    background: #dedede;
+  }
+
+  .sk-toggle {
+    display: flex;
+    align-content: center;
+    text-align: center;
+    border-radius: 3px;
+    max-height: 30px;
+  }
+
+  .sk-range-slider .rc-slider-mark-text {
+    color: #666;
+  }
+}
+
+

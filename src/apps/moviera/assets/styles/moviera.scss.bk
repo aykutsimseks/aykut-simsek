@@ -1,0 +1,131 @@
+.moviera {
+	$theme: #DE5E60;
+	$theme-alt: #ff5E60;
+	$theme-text: #aaa;
+	$font-family: Roboto, sans-serif;
+	$panel-width: 340px;
+
+	margin: 0;
+	height: 100vh;
+	width: 100vw;
+  font-family: $font-family;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  background: #333;
+  color: $theme-text;
+  font-size: 12px;
+
+  .row {
+    margin: 25px 0;
+  }
+
+  .control-panel {
+    width: $panel-width;
+    height: 100%;
+
+    .header-bar {
+      position: relative;
+      background-color: $theme;
+      color: $theme-text;
+      height: 50px;
+      padding: 10px 10px;
+    }
+
+    .main-content {
+      padding: 0 0 0 20px;
+      overflow-y: auto;
+    }
+
+    .bottom-navigation {
+      position: absolute;
+      bottom: 0;
+      width: $panel-width;
+      /* max-width: calc(100% - 30px); */
+
+      > div {
+        background-color: $theme !important;
+      }
+
+      button {
+        background: $theme !important;
+        max-width: none !important;
+
+        &:hover {
+          background: $theme-alt !important;
+        };
+      }
+
+      .bottom-navigation-item {
+
+
+        svg path, div {
+          color: $theme-text !important;
+          fill: $theme-text !important;
+        }
+
+        &:hover {
+          /*svg path, div {
+            color: $theme !important;
+            fill: $theme !important;
+          }*/
+        }
+      }
+    }
+  }
+
+  .bottom-navigation {
+    margin-left: -40px;
+
+    .pagination {
+
+      ul {
+        list-style: none;
+      }
+
+      li {
+        border-radius: 50%;
+        color: $theme;
+        display: inline-block;
+        margin: 0;
+        transition: .15s ease-in;
+        cursor: pointer;
+        width: 26px;
+        height: 26px;
+        vertical-align: middle;
+
+        &:hover {
+          background: rgba(222,94,96, .5);
+          color: #fff;
+        }
+
+        a {
+          padding: 5px;
+        }
+      }
+
+      .pagination-number,
+      .pagination-arrow {
+        vertical-align: 4px;
+      }
+
+      .pagination-number {
+        font-family: "Roboto", sans-serif;
+        font-size: 14px;
+        text-align: center;
+        line-height: 24px;
+        min-width: 40px;
+        padding: 8px 0;
+        &.current-number {
+          background: $theme;
+          color: #fff;
+        }
+      }
+
+      .pagination-arrow {
+        font-size: 28px;
+        padding: 4px 8px;
+        margin-top: 15px;
+      }
+    }
+  }
+}
