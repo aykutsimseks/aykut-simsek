@@ -1,0 +1,22 @@
+{
+  "name"             : "aykut-simsek",
+  "cwd"              : "/home/ubuntu/aykut-simsek",
+  "script"           : "dist/bundle.js",
+  "log_date_format"  : "YYYY-MM-DD HH:mm Z",
+  "error_file"       : "/home/ubuntu/.pm2/logs/aykut-simsek/error.log",
+  "out_file"         : "/home/ubuntu/.pm2/logs/aykut-simsek/out.log",
+  "pid_file"         : "/home/ubuntu/.pm2/pids/aykut-simsek.pid",
+  "instances"        : 2,
+  "min_uptime"       : "200s",
+  "max_restarts"     : 10,
+  "max_memory_restart": "150M",
+  "cron_restart"     : "1 0 * * *",
+  "watch"            : false,
+  "merge_logs"       : true,
+  "exec_interpreter" : "node",
+  "exec_mode"        : "cluster",
+  "autorestart"      : true,
+  "vizion"           : false,
+}
+
+
