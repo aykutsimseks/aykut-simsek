@@ -8,13 +8,35 @@ const config = {
     'webpack-hot-middleware/client',
     './index.js',
   ],
+  devtool: 'eval',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/static/',
   },
+  stats: { colors: true },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.DefinePlugin({
+    //   'process.env': {
+    //     NODE_ENV: JSON.stringify('production'),
+    //   },
+    // }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   comments: false, // remove comments
+    //   compress: {
+    //     unused: true,
+    //     dead_code: true, // big one--strip code that will never execute
+    //     warnings: false, // good for prod apps so users can't peek behind curtain
+    //     drop_debugger: true,
+    //     conditionals: true,
+    //     evaluate: true,
+    //     drop_console: true, // strips console statements
+    //     sequences: true,
+    //     booleans: true,
+    //   },
+    // }),
+    // new ExtractTextPlugin('styles.css'),
   ],
   module: {
     loaders: [
@@ -26,10 +48,12 @@ const config = {
       },
       {
         test: /\.css$/,
+        // loaders: [ExtractTextPlugin.extract('style-loader'), 'css-loader'],
         loaders: ['style-loader', 'css-loader'],
       },
       {
         test: /\.scss$/,
+        // loaders: [ExtractTextPlugin.extract('style-loader'), 'css-loader', 'sass-loader'],
         loaders: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
@@ -62,11 +86,12 @@ const config = {
       },
     ],
   },
+  target: 'web',
   resolveLoader: {
     root: [
       path.join(__dirname, 'node_modules'),
     ],
-    extensions: ['', '.js', '.jsx', '.json', '.scss', '.css']
+    extensions: ['', '.js', '.jsx', '.json', '.scss', '.css'],
   },
   resolve: {
     root: [

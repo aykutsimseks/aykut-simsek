@@ -192,13 +192,17 @@
       cursor: pointer;
       float: left;
       color: #aaa;
-      display: none;
+      opacity: 0;
+      transition: all 0.3s linear;
       width: 100%;
-      height: 22px;
+      height: 0;
+      scroll: hidden;
 
       &:hover, &.active  {
-        display: block;
+        opacity: 1;
+        height: auto;
         color: #fff;
+        height: 22px;
 
         .bullet {
           width: 12px;
@@ -221,12 +225,14 @@
         background: #fff;
         border: none;
         z-index: 1000;
-        }
+        transition: all 0.1s linear;
+      }
     }
 
     &:hover {
       .legend-item {
-        display: block;
+        height: 22px;
+        opacity: 1;
       }
     }
 
@@ -236,7 +242,8 @@
       right: 0px;
 
       .text {
-        display: none;
+        height: 0;
+        opacity: 0;
       }
     }
   }
