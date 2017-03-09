@@ -1,3 +1,13 @@
+.info-modal {
+  font-size: 12px;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+    color: #336fa2;
+  }
+}
+
 .altug-firarda {
 	$theme: rgba(51, 122, 183, 1);
 	$theme-alt: #336fa2;
@@ -25,7 +35,7 @@
   		position: relative;
   		background-color: $theme;
   		color: $theme-text;
-  		height: 50px;
+  		height: 70px;
   		padding: 10px 10px;
       white-space: nowrap;
       overflow: hidden;
@@ -182,7 +192,6 @@
     padding: 10px 0 5px 5px;
     list-style: none;
 
-    border: 2px solid rgba(0,0,0,0.1);
     background-clip: padding-box;
 
     .legend-item {
@@ -193,10 +202,10 @@
       float: left;
       color: #aaa;
       opacity: 0;
-      transition: all 0.3s linear;
+      transition: all 0.2s linear;
       width: 100%;
       height: 0;
-      scroll: hidden;
+      overflow: hidden;
 
       &:hover, &.active  {
         opacity: 1;
@@ -207,13 +216,13 @@
         .bullet {
           width: 12px;
           height: 12px;
-          margin: 1px 6px 6px 0px;
+          margin: 3px 6px 6px 0px;
         }
       }
 
       .bullet {
         float: left;
-        margin: 2px 8px 9px 2px;
+        margin: 5px 8px 9px 2px;
         width: 8px;
         height: 8px;
         -webkit-border-radius: 50%;
@@ -225,7 +234,7 @@
         background: #fff;
         border: none;
         z-index: 1000;
-        transition: all 0.1s linear;
+        transition: all 0.2s linear;
       }
     }
 
@@ -268,8 +277,9 @@
       display: none;
       cursor: pointer;
       color: #aaa;
-      padding: 4px;
-      text-align: right;
+      padding: 4px 6px 2px 8px;
+      text-align: center;
+      line-height: 18px;
 
       .flag {
         height: 18px;
@@ -277,7 +287,7 @@
       }
 
       .text {
-        vertical-align: 5px;
+        // vertical-align: 6px;
         display: none;
         margin-right: 8px;
       }
@@ -320,5 +330,9 @@
     &:hover {
       fill-opacity: 0.5;
     }
+  }
+
+  .leaflet-container {
+    background: #fff;
   }
 }

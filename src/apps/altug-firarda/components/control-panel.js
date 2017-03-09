@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import _ from 'lodash';
+import moment from 'moment';
+
 import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
 import Dialog from 'material-ui/Dialog';
 
@@ -8,19 +11,17 @@ import ForwardIcon from 'material-ui/svg-icons/navigation/arrow-forward';
 import CalendarIcon from 'material-ui/svg-icons/action/date-range';
 import InfoIcon from 'material-ui/svg-icons/action/info-outline';
 
-import moment from 'moment';
-
-
-//import Choropleth from '../choropleth/choropleth';
+import WorldMap from './world-map/world-map';
 
 const aboutModal = (modalState, toggle) => (
   <Dialog
-    title="Dialog With Actions"
     modal={false}
     open={modalState}
     onRequestClose={() => { toggle(false); }}
   >
-    The actions in this window were passed in as an array of React objects.
+    <div className="info-modal">
+      <div className="row">Crafted with ❤ by <a href="/" rel="noopener noreferrer" target="_blank">Aykut Simsek</a> | 2017</div>
+    </div>
   </Dialog>
 );
 
@@ -80,7 +81,7 @@ export default class ControlPanel extends Component {
     const dateDiff = m2.diff(m1, 'days');
 
     if (dateDiff) {
-      const duration = `${dateDiff + 1} ${this.getLocaleText('day')}${ this.props.locale == 'en' && dateDiff > 0 ? 's' : ''}`;
+      const duration = `${dateDiff + 1} ${this.getLocaleText('day')}${this.props.locale === 'en-US' && dateDiff > 0 ? 's' : ''}`;
       if (m1.month() === m2.month()) {
         dateInterval = `${m1.format('D')} - ${m2.format('D MMMM')}`;
       } else {
@@ -120,7 +121,7 @@ export default class ControlPanel extends Component {
               />
             </div>
             :
-            null
+            <WorldMap/>
           }
           <div className="story">
             <div dangerouslySetInnerHTML={{ __html: this.getLocaleText('story').replace(/(#\w+)/g, "<span class='hastag' >$1</span>") }} />

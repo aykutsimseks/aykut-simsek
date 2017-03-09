@@ -6,8 +6,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MaterialTheme from './assets/styles/material-theme';
 
-import ControlPanel from './components/control-panel/control-panel';
-import MapPanel from './components/map/map';
+import ControlPanel from './components/control-panel';
+import MapPanel from './components/map';
 import LanguageSwitch from './components/language-switch/language-switch';
 
 import TripJSON from './assets/altug-firarda.json';
@@ -83,8 +83,23 @@ export default class AltugFirarda extends Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
 
     const index = Number(this.props.params.pageId - 1) || 0;
+
+    let browserLanguage = 'en-US';
+    if (navigator.browserLanguage) {
+      browserLanguage = navigator.browserLanguage;
+      // en-US
+    } else if (navigator.language) {
+      browserLanguage = navigator.language;
+      // en-US
+    }
+
+    let locationLanguage = _.get(props, 'location.query.l');
+    if (locationLanguage && locationLanguage.startsWith('en')) {
+      locationLanguage = 'en-US';
+    }
+
     this.state = {
-      locale: 'tr',
+      locale: locationLanguage || browserLanguage || 'tr',
       route,
       ...AltugFirarda.getState(index),
     };

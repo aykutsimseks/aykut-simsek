@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import L from 'leaflet';
 import _ from 'lodash';
 import { Map, TileLayer, Marker, CircleMarker, Polyline, ZoomControl } from 'react-leaflet';
-import LocationIcon from '../../assets/img/location.png';
-import Legend from './legend/legend';
+import Legend from './legend';
 
-require('../../assets/js/vendor/leaflet.awesome-markers.js');
-require('../../assets/styles/vendor/font-awesome/css/font-awesome.min.css');
-require('../../assets/styles/vendor/leaflet.css');
+import LocationIcon from '../assets/img/location.png';
+
+require('../assets/js/vendor/leaflet.awesome-markers.js');
+require('../assets/styles/vendor/font-awesome/css/font-awesome.min.css');
+require('../assets/styles/vendor/leaflet.css');
 
 const markerIcon = L.icon({
   iconUrl: LocationIcon,
