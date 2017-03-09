@@ -21,21 +21,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
-// ElasticSearch
-const cors = require('cors');
-const SearchkitExpress = require('searchkit-express');
-
-const elasticHost = 'http://localhost:9200';
-
-app.use('/api', cors({
-  origin: '*',
-  maxAge: 20 * 24 * 60 * 60, //20 days like elastic
-}));
-app.use('/api/movies', SearchkitExpress.createRouter({
-  host: elasticHost, index: 'movies',
-}));
-
-
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
