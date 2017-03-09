@@ -102,7 +102,6 @@ const config = {
       '@src': path.resolve(__dirname, './src'),
       '@components': path.resolve(__dirname, './src/components'),
       'react': path.resolve('./node_modules/react'),
-      'lodash': path.resolve('./node_modules/lodash'),
     },
   },
 };

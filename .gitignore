@@ -3,3 +3,5 @@ npm-debug.log
 .DS_Store
 dist
 src/apps/moviera/movie-index/images/*
+
+data
