@@ -1,44 +1,23 @@
 const webpack = require('webpack');
 const path = require('path');
 
-const buildPath = path.resolve(__dirname, 'public', 'build');
-const mainPath = path.resolve(__dirname, 'src', 'index.js');
-
 const CompressionPlugin = require('compression-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
+const buildPath = path.resolve(__dirname, 'public', 'build');
+const mainPath = path.resolve(__dirname, 'src', 'index.js');
+
 const config = {
 
-  context: path.join(__dirname, 'src'),
-  // Makes sure errors in console map to the correct file
-  // and line number
-  devtool: 'eval',
-  entry: [
-    'react-hot-loader/patch',
-
-    // For hot style updates
-    'webpack/hot/dev-server',
-
-    // The script refreshing the browser on none hot updates
-    'webpack-dev-server/client?http://localhost:8080',
-
-    // Our application
-    mainPath,
-  ],
+  // We change to normal source mapping
+  devtool: 'cheap-module-source-map',
+  entry: mainPath,
   output: {
-
-    // We need to give Webpack a path. It does not actually need it,
-    // because files are kept in memory in webpack-dev-server, but an
-    // error will occur if nothing is specified. We use the buildPath
-    // as that points to where the files will eventually be bundled
-    // in production
     path: buildPath,
     filename: 'bundle.js',
-
-    // Everything related to Webpack should go through a build path,
-    // localhost:3000/build. That makes proxying easier to handle
     publicPath: '/build/',
   },
+
   module: {
     loaders: [
       {
@@ -66,18 +45,37 @@ const config = {
     ],
   },
 
-  // We have to manually add the Hot Replacement plugin when running
-  // from Node
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-
+    new webpack.DefinePlugin({ // <-- key to reducing React's size
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
+    new webpack.optimize.DedupePlugin(), // dedupe similar code
+    new webpack.optimize.AggressiveMergingPlugin(), // Merge chunks
+    new webpack.optimize.UglifyJsPlugin({
+      comments: false, // remove comments
+      compress: {
+        unused: true,
+        dead_code: true, // big one--strip code that will never execute
+        warnings: false, // good for prod apps so users can't peek behind curtain
+        drop_debugger: true,
+        conditionals: true,
+        evaluate: true,
+        drop_console: true, // strips console statements
+        sequences: true,
+        booleans: true,
+      },
+    }),
     new CompressionPlugin({
       asset: '[path].gz[query]',
       algorithm: 'gzip',
-      test: /\.js$|\.json|\.css$|\.html|\.png$/,
+      test: /\.js$/,
       threshold: 10240,
       minRatio: 0.8,
     }),
+
+    new BundleAnalyzerPlugin(),
   ],
 
   resolve: {
@@ -88,6 +86,8 @@ const config = {
       react: path.resolve('./node_modules/react'),
     },
   },
+
+  target: 'web',
 };
 
 module.exports = config;

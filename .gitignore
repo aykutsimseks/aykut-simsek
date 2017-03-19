@@ -5,3 +5,5 @@ dist
 src/apps/moviera/movie-index/images/*
 
 data
+
+public/build/

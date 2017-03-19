@@ -1,45 +1,33 @@
 import React, { Component } from 'react';
 
-import _ from 'lodash';
-
 import { StickyContainer, Sticky } from 'react-sticky';
 import Swiper from 'react-id-swiper';
 
-require('./assets/styles/vendor/font-awesome/css/font-awesome.min.css');
+require('@styles/vendor/font-awesome/css/font-awesome.css');
 require('./assets/styles/vendor/swiper/swiper.scss');
 require('./assets/styles/homepage.scss');
 
 const projects = [
   {
     title: 'Altug Firarda',
-    //thumb: AltugFirardaThumb,
     id: 'altug-firarda',
     url: 'altug-firarda',
   },
   {
     title: 'Moviera',
-    //thumb: MovieraThumb,
     id: 'moviera',
     url: 'moviera',
   },
   {
     title: 'Roof Piano',
-    //thumb: RoofPiano,
     id: 'roof-piano',
     url: 'http://www.civicdashboards.com/project/roof-piano',
   },
   {
     title: 'Snow Plows',
-    //thumb: NewarkSnowPlows,
     id: 'newark-snow-plows',
     url: 'http://data.ci.newark.nj.us/base/maps/snowplows.html',
   },
-  // {
-  //   title: null,
-  //   thumb: null,
-  //   id: null,
-  //   url: null,
-  // },
 ];
 
 const socials = [
@@ -110,7 +98,7 @@ export default class Homepage extends Component {
               <div className="col-sm-12 col-md-12 col-lg-12 slide-content">
                 <Swiper {...swiperParams}>
                   { projects.map(p =>
-                    <a className="slide" href={p.url} target="blank" key={p.id} style={{ backgroundImage: `url(${require(`./assets/img/thumbs/${p.id}-thumb.jpg`)})` }} >
+                    <a className="slide" href={p.url} key={p.id} style={{ backgroundImage: `url(${require(`./assets/img/thumbs/${p.id}-thumb.jpg`)})` }} >
                       <div className="text">{ p.title }</div>
                     </a>,
                   )}

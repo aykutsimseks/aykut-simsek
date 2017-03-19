@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import L from 'leaflet';
-import _ from 'lodash';
+import { chain, map, findIndex, get, concat } from 'lodash';
 import { Map, TileLayer, Marker, CircleMarker, Polyline, ZoomControl } from 'react-leaflet';
 import Legend from './legend';
 
 import LocationIcon from '../assets/img/location.png';
 
 require('../assets/js/vendor/leaflet.awesome-markers.js');
-require('../assets/styles/vendor/font-awesome/css/font-awesome.min.css');
+require('@styles/vendor/font-awesome/css/font-awesome.css');
 require('../assets/styles/vendor/leaflet.css');
 
 const markerIcon = L.icon({
@@ -76,9 +76,9 @@ export default class MapPanel extends Component {
     const position = [Number(this.props.lat), Number(this.props.lon)];
     const positions = this.props.positions;
     const transportMarkers = this.generateMarkers();
-    const places = _.chain(this.props.route)
+    const places = chain(this.props.route)
       .groupBy(this.props.locale === 'tr' ? 'country_tr' : 'country')
-      .map((d, i) => ({ place: i, min: Math.min.apply(null, _.map(d, 'idx')), max: Math.max.apply(null, _.map(d, 'idx')) }))
+      .map((d, i) => ({ place: i, min: Math.min.apply(null, map(d, 'idx')), max: Math.max.apply(null, map(d, 'idx')) }))
       .flatten()
       .value();
 
@@ -93,17 +93,9 @@ export default class MapPanel extends Component {
           <Polyline positions={positions} {...pathOptions} />
           <ZoomControl position="bottomright" />
           {
-            /*
-            (
-              this.props.showTransportMarkers ?
-              _.slice(this.props.route, Math.max(this.props.index - 2, 0), this.props.index + 1)
-              :
-              this.props.route
-            )
-            */
             this.props.route
             .map((p, i) => {
-              const colorIndex = _.findIndex(places, ['place', _.get(p, this.props.locale === 'tr' ? 'country_tr' : 'country')]);
+              const colorIndex = findIndex(places, ['place', get(p, this.props.locale === 'tr' ? 'country_tr' : 'country')]);
               const color = colors[colorIndex];
               // const radius = this.props.showTransportMarkers ? 4 : 4;
               return p.lat && p.lon && <CircleMarker key={`circle-marker-${i}`} {...pointOptions} center={new L.LatLng(p.lat, p.lon)} color={color} radius={4} />;
@@ -122,7 +114,7 @@ export default class MapPanel extends Component {
               return <Marker key={`transport-icon-${i}`} position={m.loc} icon={transportMarker} />;
             })
           }
-          <Legend items={_.concat([{ place: 'Altug Firarda', min: 0, max: this.props.route.length }], places)} index={this.props.index} colors={_.concat(['rgba(0,0,0,.2)'], colors)} updateState={this.props.updateState} />
+          <Legend items={concat([{ place: 'Altug Firarda', min: 0, max: this.props.route.length }], places)} index={this.props.index} colors={concat(['rgba(0,0,0,.2)'], colors)} updateState={this.props.updateState} />
         </Map>
       </div>
     );

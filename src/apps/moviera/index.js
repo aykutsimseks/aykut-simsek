@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import cx from 'classnames';
-import _ from 'lodash';
-import elasticsearch from 'elasticsearch';
+import { get, uniqBy, merge } from 'lodash';
+import { Client } from 'elasticsearch';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -20,9 +20,8 @@ import Results from './components/results';
 
 require('./assets/styles/main.scss');
 
-
-const client = new elasticsearch.Client({
-  host: 'localhost:9200',
+const client = new Client({
+  host: `${window.location.protocol}//${window.location.hostname}:9200`,
   // log: 'trace',
 });
 
@@ -112,14 +111,14 @@ export default class Moviera extends Component {
           window.scrollTo(0, 0);
         }
         this.setState({
-          movies: reset ? _.get(body, 'hits.hits') : _.uniqBy(this.state.movies.concat(_.get(body, 'hits.hits')), '_id'),
+          movies: reset ? get(body, 'hits.hits') : uniqBy(this.state.movies.concat(get(body, 'hits.hits')), '_id'),
           reset: false,
           showLoader: false,
         });
       });
   }
 
-  updateState = obj => this.setState(_.merge(obj, { showLoader: true, reset: true }))
+  updateState = obj => this.setState(merge(obj, { showLoader: true, reset: true }))
 
   handleScroll = () => {
     const windowHeight = 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight;

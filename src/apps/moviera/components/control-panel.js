@@ -94,7 +94,7 @@ export default class ControlPanel extends Component {
           </div>
         </div>
         <div className="row attribution">
-          Crafted by <a href="/" rel="noopener noreferrer" target="_blank">Aykut Simsek</a> | 2017
+          Crafted by <a href="/" rel="noopener noreferrer">Aykut Simsek</a> | 2017
         </div>
       </div>
     );

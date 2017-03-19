@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import _ from 'lodash';
+import { capitalize } from 'lodash';
 import moment from 'moment';
 
 import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
@@ -20,7 +20,7 @@ const aboutModal = (modalState, toggle) => (
     onRequestClose={() => { toggle(false); }}
   >
     <div className="info-modal">
-      <div className="row">Crafted with ❤ by <a href="/" rel="noopener noreferrer" target="_blank">Aykut Simsek</a> | 2017</div>
+      <div className="row">Crafted with ❤ by <a href="/" rel="noopener noreferrer">Aykut Simsek</a> | 2017</div>
     </div>
   </Dialog>
 );
@@ -70,7 +70,7 @@ export default class ControlPanel extends Component {
     const m1 = moment.utc(this.props.start_date, 'YYYY-MM-DD');
     const m2 = moment.utc('2015-02-01', 'YYYY-MM-DD');
     const dateDiff = m1.diff(m2, 'days');
-    return (<div>{_.capitalize(this.getLocaleText('day'))}<div style={{ fontSize: 18 }}>{dateDiff}</div></div>);
+    return (<div>{capitalize(this.getLocaleText('day'))}<div style={{ fontSize: 18 }}>{dateDiff}</div></div>);
   }
 
   formatDateDisplay= () => {

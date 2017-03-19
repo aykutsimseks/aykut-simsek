@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+import { includes } from 'lodash';
 
 // require('./leaflet.label.js');
 
-const world = require('./countries.geo.json');
 
 const visited = ['Turkey', 'United Arab Emirates', 'India', 'Sri Lanka', 'Maldives', 'Singapore', 'Indonesia', 'Malaysia', 'Australia', 'Thailand', 'Laos', 'Vietnam', 'Cambodia', 'Japan', 'China', 'Macau', 'Hong Kong', 'United States of America', 'Mexico', 'Cuba', 'Germany'];
 const visitedOther = ['Canada', 'Austria', 'Belgium', 'Bulgaria', 'Czech Republic', 'Finland', 'France', 'Germany', 'Greece', 'Italy', 'Liechtenstein', 'Monaco', 'Netherlands', 'Russia', 'Spain', 'Switzerland', 'United Kingdom', 'Vatican City'];
@@ -11,28 +10,8 @@ const visitedOther = ['Canada', 'Austria', 'Belgium', 'Bulgaria', 'Czech Republi
 
 let clicked = null;
 
-export default class WorldMap extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      features: world,
-    };
-  }
-
-  componentDidMount() {
-    this.renderPolygons();
-  }
-
-  shouldComponentUpdate = () => false
-
-  onMapClick = () => {
-    // Do some wonderful map things...
-  }
-
-  renderPolygons = () => {
-    const map = this.state.map = L.map('mini-world-map', {
+const renderPolygons = () => {
+    const map = L.map('mini-world-map', {
       attributionControl: false,
       zoomControl: false,
       scrollWheelZoom: false,
@@ -54,9 +33,9 @@ export default class WorldMap extends Component {
 
         // layer.bindLabel(feature.properties.name, { direction: 'auto' });
 
-        if (_.includes(visited, name)) {
+        if (includes(visited, name)) {
           layer.setStyle({ fillColor: 'rgba(51, 122, 183, 1)' });
-        } else if (_.includes(visitedOther, name)) {
+        } else if (includes(visitedOther, name)) {
           layer.setStyle({ fillColor: 'rgba(177, 207, 233, 1)' });
         }
 
@@ -83,6 +62,36 @@ export default class WorldMap extends Component {
     // map.on('click', this.onMapClick);
 
     map.setView(new L.LatLng(25, 5), 0.34);
+};
+
+const world = require('./countries.geo.json');
+// const fs = require('fs');
+
+// let world = null;
+
+// // Write the callback function
+// function handleFile(err, data) {
+//   if (err) throw err;
+//   world = JSON.parse(data);
+//   // You can now play with your datas
+//   renderPolygons();
+// }
+
+// // Read the file and send to the callback
+// fs.readFile('./countries.geo.json', handleFile);
+
+export default class WorldMap extends Component {
+
+  componentDidMount() {
+    if (world) {
+      renderPolygons();
+    }
+  }
+
+  shouldComponentUpdate = () => false
+
+  onMapClick = () => {
+    // Do some wonderful map things...
   }
 
   render() {

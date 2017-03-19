@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+import { get, map, extend } from 'lodash';
 import L from 'leaflet';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -12,8 +12,8 @@ import LanguageSwitch from './components/language-switch/language-switch';
 
 import TripJSON from './assets/altug-firarda.json';
 
-const route = _.get(TripJSON, ['route']);
-_.map(route, (e, i) => { _.extend(e, { idx: i + 1 }); });
+const route = get(TripJSON, ['route']);
+map(route, (e, i) => { extend(e, { idx: i + 1 }); });
 
 const dateLineIndex = 85;
 
@@ -26,8 +26,8 @@ export default class AltugFirarda extends Component {
     let location;
     let positions;
     if (index) {
-      location = _.get(route, index - 1);
-      location.departed_by = _.get(route, [index, 'arrived_by']);
+      location = get(route, index - 1);
+      location.departed_by = get(route, [index, 'arrived_by']);
 
       positions = [
         route.slice(
@@ -47,7 +47,7 @@ export default class AltugFirarda extends Component {
         positions[1][0].lng = Number(positions[0][0].lng) - 360;
       }
     } else {
-      location = _.get(TripJSON, 'summary');
+      location = get(TripJSON, 'summary');
       positions = [
         route
         .map(p => new L.LatLng(p.lat, p.lon, 0, true)),
