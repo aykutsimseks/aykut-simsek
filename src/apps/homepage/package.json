@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react-id-swiper": "^1.2.3",
-    "react-sticky": "^5.0.5"
+    "react-id-swiper": "^1.2.3"
   }
 }

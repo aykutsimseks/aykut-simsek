@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import { StickyContainer, Sticky } from 'react-sticky';
 import Swiper from 'react-id-swiper';
 
 require('@styles/vendor/font-awesome/css/font-awesome.css');
@@ -82,36 +81,29 @@ export default class Homepage extends Component {
   render() {
     return (
       <div className="homepage">
-        <StickyContainer>
-          <div className="main">
-            <div className="personal">
-              <div className="title">
-                Aykut Simsek
-              </div>
-              <ul className="social-icons icon-flat icon-zoom list-unstyled list-inline">
-                { socials.map(s =>
-                  <li key={s.icon}><a href={s.url} alt={s.alt} title={s.alt} target="blank"><i className={`fa fa-${s.icon}`} /></a></li>,
-                )}
-              </ul>
+        <div className="main">
+          <div className="personal">
+            <div className="title">
+              Aykut Simsek
             </div>
-            <div className="row coverflow-slider" >
-              <div className="col-sm-12 col-md-12 col-lg-12 slide-content">
-                <Swiper {...swiperParams}>
-                  { projects.map(p =>
-                    <a className="slide" href={p.url} key={p.id} style={{ backgroundImage: `url(${require(`./assets/img/thumbs/${p.id}-thumb.jpg`)})` }} >
-                      <div className="text">{ p.title }</div>
-                    </a>,
-                  )}
-                </Swiper>
-              </div>
+            <ul className="social-icons icon-flat icon-zoom list-unstyled list-inline">
+              { socials.map(s =>
+                <li key={s.icon}><a href={s.url} alt={s.alt} title={s.alt} target="blank"><i className={`fa fa-${s.icon}`} /></a></li>,
+              )}
+            </ul>
+          </div>
+          <div className="row coverflow-slider" >
+            <div className="col-sm-12 col-md-12 col-lg-12 slide-content">
+              <Swiper {...swiperParams}>
+                { projects.map(p =>
+                  <a className="slide" href={p.url} key={p.id} style={{ backgroundImage: `url(${require(`./assets/img/thumbs/${p.id}-thumb.jpg`)})` }} >
+                    <div className="text">{ p.title }</div>
+                  </a>,
+                )}
+              </Swiper>
             </div>
           </div>
-          <Sticky>
-            <header>
-              <span className="pull-left">Aykut Simsek</span>
-            </header>
-          </Sticky>
-        </StickyContainer>
+        </div>
       </div>
     );
   }

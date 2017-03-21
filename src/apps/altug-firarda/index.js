@@ -93,7 +93,7 @@ export default class AltugFirarda extends Component {
       // en-US
     }
 
-    let locationLanguage = _.get(props, 'location.query.l');
+    let locationLanguage = get(props, 'location.query.l');
     if (locationLanguage && locationLanguage.startsWith('en')) {
       locationLanguage = 'en-US';
     }
