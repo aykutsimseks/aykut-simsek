@@ -1,6 +1,6 @@
 const Webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const webpackConfig = require('./../webpack.config.js');
+const webpackConfig = require('./../webpack/webpack.config.js');
 
 module.exports = () => {
   // First we fire up Webpack an pass in the configuration we
