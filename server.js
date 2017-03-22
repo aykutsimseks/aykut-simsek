@@ -15,7 +15,7 @@ const publicPath = path.resolve(__dirname, 'public');
 app.use(compression());
 
 // We point to our static assets
-app.use(express.static(publicPath));
+app.use(express.static(publicPath, { maxAge: 86400000 }));
 
 // We only want to run the workflow when not in production
 if (!isProduction) {

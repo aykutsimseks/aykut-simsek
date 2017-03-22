@@ -10,9 +10,9 @@
     "start": "npm run prod",
     "prod": "NODE_ENV=production PORT=3000 node server.js",
     "build:webpack": "NODE_ENV=production webpack --progress --config webpack/prod.webpack.config.js",
-    "build:dev": "webpack --env=dev --progress --profile --colors",
-    "build:dist": "webpack --env=prod --progress --profile --colors",
-    "build": "npm run clean && npm run build:webpack"
+    "build": "npm run clean && npm run build:webpack",
+    "tableflip": "rm -rf public/build && rm -rf node_modules && rm -rf src/apps/homepage/node_modules && rm -rf src/apps/altug_firarda/node_modules && rm -rf src/apps/moviera/node_modules",
+    "install:all": "npm i && npm i src/apps/homepage && npm i src/apps/altug-firarda && npm i src/apps/moviera"
   },
   "author": "Aykut Simsek",
   "license": "MIT",

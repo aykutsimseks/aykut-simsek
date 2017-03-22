@@ -17,11 +17,10 @@ const MovieItem = (props) => {
     tomatoRating,
   } = props;
   const url = `http://www.imdb.com/title/${imdbId}`;
-
   return (
     <div className="row col-md-12 movie-item">
       <a className="poster" href={url} rel="noopener noreferrer" target="_blank">
-        <img role="presentation" src={poster} />
+        <img role="presentation" src={poster.replace('_V1_SX300', '_V1_SX100')} />
       </a>
       <div className="details">
         <div className="row col-md-12">

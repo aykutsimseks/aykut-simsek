@@ -72,6 +72,20 @@ const swiperParams = {
     modifier: 1,
     slideShadows: true,
   },
+  breakpoints: {
+    1024: {
+      slidesPerView: '3',
+    },
+    768: {
+      slidesPerView: '2',
+    },
+    640: {
+      slidesPerView: '1',
+    },
+    320: {
+      slidesPerView: '1',
+    },
+  },
   autoplay: 2500,
   autoplayDisableOnInteraction: true,
 };
