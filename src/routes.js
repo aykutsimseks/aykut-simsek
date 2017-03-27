@@ -26,28 +26,20 @@ const routes = {
   component: App,
   indexRoute: {
     getComponent(location, cb) {
-      System.import('@src/apps/homepage/homepage')
+      System.import('@src/components/Home.js')
         .then(loadRoute(cb))
         .catch(errorLoading);
     },
   },
   childRoutes: [
-    {
-      path: 'altug-firarda',
-      getComponent(location, cb) {
-        System.import('@src/apps/altug-firarda')
-          .then(loadRoute(cb, false))
-          .catch(errorLoading);
-      },
-    },
-    {
-      path: 'moviera',
-      getComponent(location, cb) {
-        System.import('@src/apps/moviera')
-          .then(loadRoute(cb))
-          .catch(errorLoading);
-      },
-    },
+    // {
+    //   path: 'test',
+    //   getComponent(location, cb) {
+    //     System.import('@src/.....')
+    //       .then(loadRoute(cb, false))
+    //       .catch(errorLoading);
+    //   },
+    // },
   ],
 };
 

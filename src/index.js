@@ -7,10 +7,7 @@ import AppRoutes from '@src/routes';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-
 const rootEl = document.getElementById('root');
-
-
 
 ReactDOM.render(
   <AppContainer>
