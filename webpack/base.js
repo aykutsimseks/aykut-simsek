@@ -19,10 +19,12 @@ const defaults = {
   },
 
   module: {
-    rules: [
+    // rules : [ // Webpack 2
+    loaders: [
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        // loader: 'babel-loader', // Webpack 2
+        loader: 'babel',
         include: path.join(__dirname, '../src'),
         exclude: /node_modules/,
       },

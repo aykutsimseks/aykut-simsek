@@ -29,10 +29,11 @@ const config = base.merge({
 
     new webpack.optimize.OccurrenceOrderPlugin(),
 
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false,
-    }),
+    // Webpack 2
+    // new webpack.LoaderOptionsPlugin({
+    //   minimize: true,
+    //   debug: false,
+    // }),
 
     new webpack.optimize.UglifyJsPlugin({
       beautify: false,
