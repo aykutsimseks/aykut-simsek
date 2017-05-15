@@ -1,4 +1,5 @@
 const Webpack = require('webpack');
+const path = require('path');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfig = require('./../webpack/webpack.config.js');
 
@@ -23,6 +24,9 @@ module.exports = () => {
 
   const bundler = new WebpackDevServer(compiler, {
     compress: true,
+
+    contentBase: path.resolve(__dirname, '../public', 'build'),
+
     progress: true,
 
     // We need to tell Webpack to serve our bundled application
@@ -34,7 +38,6 @@ module.exports = () => {
 
     // Configure hot replacement
     hot: true,
-    inline: true,
 
     // The rest is terminal configurations
     quiet: false,
