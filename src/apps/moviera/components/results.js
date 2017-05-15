@@ -15,6 +15,7 @@ const MovieItem = (props) => {
     directors,
     metaScore,
     tomatoRating,
+    netflixScore,
   } = props;
   const url = `http://www.imdb.com/title/${imdbId}`;
   return (
@@ -57,7 +58,7 @@ const MovieItem = (props) => {
             }
           </div>
           <div className="col-md-3 col-sm-3 col-xs-6 col-xxs-12 rating-box">
-            { !isNaN(imdbRating) &&
+            { !isNaN(netflixScore) &&
               <span>
                 {imdbRating}<span className="small">/5</span>
                 <div className="small">Netflix</div>

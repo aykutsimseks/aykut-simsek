@@ -20,7 +20,7 @@ const aboutModal = (modalState, toggle) => (
     onRequestClose={() => { toggle(false); }}
   >
     <div className="info-modal">
-      <div className="row">Crafted with ❤ by <a href="/" rel="noopener noreferrer">Aykut Simsek</a> | 2017</div>
+      <div className="row">Crafted with ❤ by <a href="/" rel="noopener noreferrer">Aykut Simsek</a> | 2016</div>
     </div>
   </Dialog>
 );

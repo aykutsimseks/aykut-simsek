@@ -185,7 +185,7 @@
     width: 110px;
     max-width: 100%;
     max-height: calc(100vh - 133px);
-    overflow-y: scroll;
+    overflow: hidden;
     font-family: $font-family;
 
     background-color: rgba(0, 0, 0, .3);
@@ -269,7 +269,7 @@
     list-style: none;
     background-color: rgba(0, 0, 0, .3);
 
-    border: 2px solid rgba(0,0,0,0.2);
+    border: 2px solid rgba(0, 0, 0, 0);
     background-clip: padding-box;
 
     .language-item {

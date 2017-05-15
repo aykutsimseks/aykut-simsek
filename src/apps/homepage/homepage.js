@@ -106,7 +106,7 @@ export default class Homepage extends Component {
               )}
             </ul>
           </div>
-          <div className="row coverflow-slider" >
+          <div className="coverflow-slider" >
             <div className="col-sm-12 col-md-12 col-lg-12 slide-content">
               <Swiper {...swiperParams}>
                 { projects.map(p =>

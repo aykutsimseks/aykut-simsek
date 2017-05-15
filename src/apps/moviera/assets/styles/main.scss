@@ -8,7 +8,7 @@
 	margin: 0;
   // padding-top: 63px;
 	min-height: 100vh;
-	min-width: 100vw;
+	min-width: 100%;
   font-family: $font-family;
   font-weight: 500;
   -webkit-font-smoothing: antialiased;
@@ -67,6 +67,7 @@
     .circular-loader {
       width: 100% !important;
       text-align: center;
+      margin-top: 40px;
     }
 
     .movie-item {
